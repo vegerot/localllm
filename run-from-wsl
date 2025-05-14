@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+set -eau
+set -x
+
+mount=/mnt/wsl/PHYSICALDRIVE1p2
+mount_home=$mount/home/max
+mount_bin=$mount/usr/local/bin/
+
+start() {
+	OLLAMA_MODELS=$mount_home/.ollama/models/ $mount_bin/ollama serve $@
+}
+
+run() {
+	$mount_bin/ollama run $@
+
+}
+
+web() {
+	source $mount_home/workspace/github.com/vegerot/localllm/.venv/bin/activate
+	$mount_home/workspace/github.com/vegerot/localllm/.venv/bin/open-webui serve $@
+}
+
+main() {
+	if [[ -z "${1:-}" ]]; then
+		echo "Usage: $0 start|run"
+		exit 1
+	elif [[ "$1" = "start" ]]; then
+		shift
+		start $@
+	elif [[ "$1" = "run" ]]; then
+		shift
+		run $@
+	elif [[ "$1" == "web" ]]; then
+		shift
+		web $@
+	else
+		echo "Usage: $0 start|run"
+		exit 1
+	fi
+}
+
+main $@
