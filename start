@@ -13,6 +13,11 @@ run() {
 
 }
 
+lama() {
+	${mount_bin:-}ollama $@
+
+}
+
 web() {
 	if [[ -n "${wsl:-}" ]]; then
 		source ${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/activate
@@ -38,15 +43,14 @@ main() {
 		web $@
 	elif [[ "$1" == "wsl" ]]; then
 		shift
-		mount=/mnt/wsl/PHYSICALDRIVE1p2/
-		mount_home=${mount}home/max/
-		mount_bin=${mount}usr/local/bin/
+		export mount=/mnt/wsl/PHYSICALDRIVE1p2/
+		export mount_home=${mount}home/max/
+		export mount_bin=${mount}usr/local/bin/
 		export OLLAMA_MODELS=${mount_home}.ollama/models/
 		wsl=true
 		main $@
 	else
-		echo "Usage: $0 start|run"
-		exit 1
+		lama $@
 	fi
 }
 
