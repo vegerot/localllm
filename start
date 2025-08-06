@@ -30,8 +30,7 @@ web() {
 main() {
 
 	if [[ -z "${1:-}" ]]; then
-		echo "Usage: $0 start|run"
-		exit 1
+		start
 	elif [[ "$1" = "start" ]]; then
 		shift
 		start $@
