@@ -27,6 +27,18 @@ web() {
 	open-webui serve $@
 }
 
+upgrade() {
+	ollama list | tail -n +2 | awk '{print $1}' | grep -v mygptoss | xargs -I {} sh -xc 'ollama pull {}'
+	if [[ -n "${wsl:-}" ]]; then
+		source ${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/activate
+		${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/open-webui serve $@
+	fi
+	source .venv/bin/activate
+	pip install --upgrade open-webui
+
+
+}
+
 main() {
 
 	if [[ -z "${1:-}" ]]; then
@@ -40,6 +52,9 @@ main() {
 	elif [[ "$1" == "web" ]]; then
 		shift
 		web $@
+	elif [[ "$1" == "upgrade" ]]; then
+		shift
+		upgrade $@
 	elif [[ "$1" == "wsl" ]]; then
 		shift
 		export mount=/mnt/wsl/PHYSICALDRIVE1p2/
