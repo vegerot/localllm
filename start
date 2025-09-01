@@ -32,7 +32,6 @@ upgrade() {
 	ollama list | tail -n +2 | awk '{print $1}' | grep -v mygptoss | xargs -I {} sh -xc 'ollama pull {}'
 	if [[ -n "${wsl:-}" ]]; then
 		source ${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/activate
-		${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/open-webui serve $@
 	fi
 	source .venv/bin/activate
 	pip install --upgrade open-webui
