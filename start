@@ -35,14 +35,17 @@ upgrade() {
 	fi
 	source .venv/bin/activate
 	pip install --upgrade open-webui
+}
 
-
+start_both() {
+	start $@ &
+	web $@
 }
 
 main() {
 
 	if [[ -z "${1:-}" ]]; then
-		start
+		start_both
 	elif [[ "$1" = "start" ]]; then
 		shift
 		start $@
