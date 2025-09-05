@@ -96,7 +96,7 @@ greenlet==3.1.1
 grpcio==1.67.1
 grpcio-status==1.67.1
 h11==0.16.0
-h2==4.2.0
+h2==4.3.0
 hf-xet==1.1.7
 hpack==4.1.0
 html5lib==1.1
