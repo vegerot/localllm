@@ -28,13 +28,14 @@ web() {
 }
 
 upgrade() {
-	curl -fsSL https://ollama.com/install.sh | sh
 	ollama list | tail -n +2 | awk '{print $1}' | grep -v mygptoss | xargs -I {} sh -xc 'ollama pull {}'
 	if [[ -n "${wsl:-}" ]]; then
 		source ${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/activate
 	fi
 	source .venv/bin/activate
 	pip install --upgrade open-webui
+	curl -fsSL https://ollama.com/install.sh | sh
+	sudo systemctl stop ollama.service && sudo systemctl disable ollama.service
 }
 
 start_both() {
