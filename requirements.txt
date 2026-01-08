@@ -101,7 +101,7 @@ typeguard==4.4.2
 typing_extensions==4.13.2
 uc-micro-py==1.0.3
 unidiff==0.7.5
-urllib3==2.3.0
+urllib3==2.6.3
 wadllib==2.0.0
 webencodings==0.5.1
 wheel==0.46.1
