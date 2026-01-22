@@ -104,6 +104,6 @@ unidiff==0.7.5
 urllib3==2.3.0
 wadllib==2.0.0
 webencodings==0.5.1
-wheel==0.46.1
+wheel==0.46.2
 xdg==5
 zipp==3.21.0
