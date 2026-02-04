@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 
 set -eau
+set -o pipefail
 set -x
 
 mount_home=${HOME}/
 export OLLAMA_HOST="0.0.0.0"
-export OLLAMA_DEBUG=1
+export OLLAMA_DEBUG=${OLLAMA_DEBUG:-1}
 start() {
 	${mount_bin:-}ollama serve $@
 }
@@ -36,6 +37,7 @@ upgrade() {
 	fi
 	source .venv/bin/activate
 	pip install --upgrade open-webui
+	pip freeze > requirements.txt
 	curl -fsSL https://ollama.com/install.sh | sh
 	sudo systemctl stop ollama.service && sudo systemctl disable ollama.service
 }
