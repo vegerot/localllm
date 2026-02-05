@@ -252,7 +252,7 @@ python-jose==3.5.0
 python-json-logger==4.0.0
 python-magic==0.4.27
 python-mimeparse==2.0.0
-python-multipart==0.0.21
+python-multipart==0.0.22
 python-oxmsg==0.0.2
 python-pptx==1.0.2
 python-socketio==5.16.0
