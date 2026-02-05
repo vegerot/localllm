@@ -36,7 +36,7 @@ upgrade() {
 		source ${mount_home:-}workspace/github.com/vegerot/localllm/.venv-wsl/bin/activate
 	fi
 	source .venv/bin/activate
-	uv pip install --upgrade open-webui jupyterlab ollama gguf
+	uv pip install --upgrade open-webui jupyterlab ollama gguf llama-cpp-python
 	uv pip freeze > requirements.txt
 	curl -fsSL https://ollama.com/install.sh | sh
 	sudo systemctl stop ollama.service && sudo systemctl disable ollama.service
