@@ -245,7 +245,7 @@ pymdown-extensions==10.20
 pymysql==1.1.2
 pypandoc==1.16.2
 pyparsing==3.3.2
-pypdf==6.5.0
+pypdf==6.6.2
 pypdfium2==5.3.0
 pypika==0.51.1
 pyproject-hooks==1.2.0
