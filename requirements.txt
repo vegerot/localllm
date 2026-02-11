@@ -216,7 +216,7 @@ pathspec==1.0.4
 peewee==3.18.3
 peewee-migrate==1.14.3
 pexpect==4.9.0
-pillow==12.1.0
+pillow==12.1.1
 platformdirs==4.5.1
 posthog==5.4.0
 primp==0.15.0
